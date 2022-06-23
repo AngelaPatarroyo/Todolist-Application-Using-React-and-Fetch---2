@@ -10,3 +10,16 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+h1 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3cm;
+}
+
+body {
+    background-color: rgb(188, 180, 180);
+}
+
+input {
+    outline: none;
+}
