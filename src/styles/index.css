@@ -11,15 +11,23 @@
 
 */
 
-h1 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 3cm;
+h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight:initial;
+    background-color: white;
+  
+    color: black;
 }
 
 body {
-    background-color: rgb(188, 180, 180);
+    background-image: url(https://i.pcmag.com/imagery/articles/05hXk1J5R4iHWkM13wqrr9M-7.jpg);
+    background-size:cover;
+   
 }
 
 input {
-    outline: none;
+    outline:rgb(188, 180, 180)
 }
+

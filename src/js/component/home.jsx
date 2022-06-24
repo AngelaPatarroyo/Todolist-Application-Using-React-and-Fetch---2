@@ -2,62 +2,62 @@ import React, { useState } from "react";
 
 //create your first component
 const Home = () => {
-	const [tareas, setTareas] = useState("");
-	const [listaTareas, setListaTareas] = useState([]);
-	const agregarTareas = (e) => {
-		e.preventDefault();
-		let tempLista = [...listaTareas];
-		tempLista.push(tareas);
-		setListaTareas(tempLista);
-		setTareas("");
+	const [tasks, setTasks] = useState("");
+	const [listTasks, setlistTasks] = useState([]);
+	const addTasks = (a) => {
+		a.preventDefault();
+		let tempList = [...listTasks];
+		tempList.push(tasks);
+		setlistTasks(tempList);
+		setTasks("");
 	};
 
-	const handleInputChange = (e) => {
-		setTareas(e.target.value);
+	const handleInputChange = (a) => {
+		setTasks(a.target.value);
 	};
 
-	const eliminarTareas = (indice) => {
-		let listaRemovida = listaTareas.filter(
+	const deleteTasks = (indice) => {
+		let listaRemovida = listTasks.filter(
 			(item, posicion) => posicion !== indice
 		);
-		setListaTareas(listaRemovida);
+		setlistTasks(listaRemovida);
 	};
-	const numeroTareas = listaTareas.length;
+	const numberTasks = listTasks.length;
 	return (
 		<div className="caja">
-			<div className="titulo mx-auto" style={{ width: "50rem" }}>
-				<h1 className="text-center display-1">todos</h1>
+			<div className="title mx-auto" style={{ width: "30rem" }}>
+				<h2 className="text-center display-1">TO DO LIST</h2>
 			</div>
 			<div className="card mx-auto" style={{ width: "50rem" }}>
 				<ul className="list-group list-group-flush">
 					<li className="list-group-item d-flex">
 						<form
 							className="me-auto p-2 text-muted fs-4 border-0 container-fluid"
-							onSubmit={agregarTareas}>
+							onSubmit={addTasks}>
 							<input
 								className="border-0 text-muted fs-4 container-fluid"
 								type="text"
 								placeholder="What needs to be done?"
 								onChange={handleInputChange}
-								value={tareas}></input>
+								value={tasks}></input>
 						</form>
 					</li>
-					{listaTareas.map((element, indice) => (
+					{listTasks.map((element, indice) => (
 						<li className="list-group-item d-flex" key={indice}>
 							<p className="me-auto p-2 text-muted fs-4">
 								{element}
 							</p>
 							<button
 								className="btn fs-4 btn-outline-light border-0"
-								onClick={() => eliminarTareas(indice)}>
-								<i className="fa-regular fa-trash-can-xmark"></i>
+								onClick={() => deleteTasks(indice)}>
+								<i className="far fa-trash-alt"></i>
 							</button>
 						</li>
 					))}
 				</ul>
 			</div>
-			<p className="me-auto p-2 text-muted fs-5 text-center display-1">
-				Te quedan {numeroTareas} tareas por terminar
+			<p className="me-auto p-3 fs-5 text-center ">
+				<mark>You have {numberTasks} tasks to finish</mark>
 			</p>
 		</div>
 	);
