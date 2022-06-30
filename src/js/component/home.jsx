@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 //create your first component
 const Home = () => {
@@ -6,11 +7,31 @@ const Home = () => {
 	const [listTasks, setlistTasks] = useState([]);
 	const addTasks = (a) => {
 		a.preventDefault();
+		
 		let tempList = [...listTasks];
 		tempList.push(tasks);
 		setlistTasks(tempList);
 		setTasks("");
 	};
+
+	
+useEffect(() => {
+	fetch("https://assets.breatheco.de/apis/fake/todos/user/angelapatarroyor", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then((resp) => {
+			return resp.json();
+		})
+		.then((data) => {
+			setlistTasks(data);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+}, []);
 
 	const handleInputChange = (a) => {
 		setTasks(a.target.value);
@@ -45,7 +66,7 @@ const Home = () => {
 					{listTasks.map((element, indice) => (
 						<li className="list-group-item d-flex" key={indice}>
 							<p className="me-auto p-2 text-muted fs-4">
-								{element}
+								{element.label}
 							</p>
 							<button
 								className="btn fs-4 btn-outline-light border-0"
