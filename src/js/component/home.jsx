@@ -9,7 +9,7 @@ const Home = () => {
 		a.preventDefault();
 		
 		let tempList = [...listTasks];
-		tempList.push(tasks);
+		tempList.push({label:tasks,done:false}); //esto cambia porque el mapeo ha cambiado, sin esto no se agrega el texto de las tareas//
 		setlistTasks(tempList);
 		setTasks("");
 	};
